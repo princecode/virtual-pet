@@ -31,8 +31,15 @@ namespace VirtualPet
             //present possible options
             //Create pet class
         }
-        private static void Menu(
+        private static void Menu()       
         {
+
+            Console.WriteLine("\n-------------------------------------------------------------------------------------------");
+            Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            Console.WriteLine("-------------------------------------------------------------------------------------------\n");
+            Console.WriteLine("Wise decision Wakandan soldier! Name your Pather Totem.");
+            Pet newPanther = new Pet();
+            newPanther.Name = newPanther.Panth
 
         }
     }
