@@ -15,7 +15,7 @@ namespace VirtualPet
         //  Health ("              ")
         //  Bathroom ("               " )
         //  Train ("              ")
-        private string Name { get; set; }
+        public string Name { get; set; }
         public int Hunger { get; set; }
         public int Thirst { get; set; }
         public int Health { get; set; }

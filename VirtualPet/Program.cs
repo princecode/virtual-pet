@@ -34,12 +34,14 @@ namespace VirtualPet
         private static void Menu()       
         {
 
-            Console.WriteLine("\n-------------------------------------------------------------------------------------------");
-            Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            Console.WriteLine("-------------------------------------------------------------------------------------------\n");
+            Console.WriteLine("\n------------------------------------------------------------------------");
+            Console.WriteLine("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            Console.WriteLine("------------------------------------------------------------------------\n");
             Console.WriteLine("Wise decision Wakandan soldier! Name your Pather Totem.");
             Pet newPanther = new Pet();
-            newPanther.Name = newPanther.Panth
+            newPanther.Name = newPanther.PantherName();
+
+            Console.WriteLine(newPanther.Name);
 
         }
     }
