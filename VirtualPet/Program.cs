@@ -31,7 +31,7 @@ namespace VirtualPet
             //present possible options
             //Create pet class
         }
-        private static void Menu()
+        private static void Menu(
         {
 
         }
