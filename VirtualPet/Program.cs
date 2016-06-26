@@ -51,7 +51,7 @@ namespace VirtualPet
                 do
                 {
 
-                    Console.WriteLine("\n\n" + newPanther.ToString());
+                    Console.WriteLine("\n" + newPanther.ToString());
                     Console.WriteLine("\n--------------------------------------------------");
                     Console.WriteLine("XXXXXXXX~~~|XXXXXXXXXXXXXXXXXXXXXXXXXX|~~~XXXXXXXX");
                     Console.WriteLine("--------------------------------------------------\n");
@@ -64,9 +64,9 @@ namespace VirtualPet
                     Console.WriteLine("\n--------------------------------------------------");
                     Console.WriteLine("XXXXXXXX~~~|XXXXXXXXXXXXXXXXXXXXXXXXXX|~~~XXXXXXXX");
                     Console.WriteLine("--------------------------------------------------\n");
+
+
                     
-                    
-                                        
                     menuSelect = Convert.ToInt32(Console.ReadLine());
 
                     if (menuSelect == 1)
@@ -103,7 +103,10 @@ namespace VirtualPet
                                        
                 }
                 while (menuSelect != 6);
+                
             }
+            
+
 
 
 
