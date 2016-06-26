@@ -15,8 +15,39 @@ namespace VirtualPet
         //  Health ("              ")
         //  Bathroom ("               " )
         //  Train ("              ")
+       
         public string Name { get; set; }
-        public int Hunger { get; set; }
+
+        private int hunger;
+        private int maxHunger = 10;
+        private int minHunger = 1;
+        public int Hunger
+        {
+            get
+            {
+                return hunger;
+                    }
+            set
+            {
+                hunger = value;
+                if (hunger < maxHunger);
+                {
+                    hunger = 0;
+                }
+                if (hunger > minHunger);
+                {
+
+                    hunger = minHunger;
+                }
+                
+
+            }
+      
+
+            }
+
+
+    
         public int Thirst { get; set; }
         public int Health { get; set; }
         public bool Bathroom { get; set; }
