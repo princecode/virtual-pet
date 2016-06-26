@@ -34,6 +34,29 @@ namespace VirtualPet
             return Name = Console.ReadLine();
         }
         //---------------------
+
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine("\n--------------------------------------------------");
+            sb.AppendFormat("XXXXXXXX~~~| Panther Totem: {0} Stats |~~~XXXXXXXX\n", Name);
+            sb.AppendLine("--------------------------------------------------\n");
+            sb.AppendFormat("Hunger: {0}" + "       |\n", Hunger);
+            sb.AppendFormat("Thirst: {0}        |\n", Thirst);
+            sb.AppendFormat("Health: {0}     |\n", Health);
+            sb.AppendFormat("Bathroom: {0}   |\n", Bathroom);
+            sb.AppendFormat("Train: {0}       |\n", Train);
+            sb.AppendLine("\n--------------------------------------------------");
+            sb.AppendLine("XXXXXXXX~~~|XXXXXXXXXXXXXXXXXXXXXXXXXX|~~~XXXXXXXX");
+            sb.AppendLine("--------------------------------------------------\n");
+
+            return sb.ToString();
+        }
+
+        //-----------------------------------
+
         public int PantherHunger()
         {
             //Todo
@@ -58,7 +81,7 @@ namespace VirtualPet
             return Bathroom;
         }
         //----------------------------------
-        public bool PantherPlay()
+        public bool PantherTrain()
         {
             //Todo
             return Train;
