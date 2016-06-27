@@ -98,15 +98,21 @@ namespace VirtualPet
 
 
                         default:
-                            continue;
-                            //Console.WriteLine("Are you sure you'd like to retire {0}?\n Enter 1 for yes and 2 for no.\n\n", newPanther.Name);
+
+                            Console.WriteLine("Are you sure you'd like to retire {0}?\n Enter 1 for yes and 2 for no.\n\n", newPanther.Name);
 
 
-                            //retire = Convert.ToInt32(Console.ReadLine());
-                            //break;
+                            retire = Convert.ToInt32(Console.ReadLine());
+                            if (retire != 1)
+                            {
+                                continue;
+                            }
+                           
+                            break;
+
                     }
 
-
+                    break;
 
                 }
 
@@ -118,9 +124,9 @@ namespace VirtualPet
 }
 
 
-        //        if (menuSelect == 1)
-        //        {
-        //            newPanther.PantherHunger();
+//        if (menuSelect == 1)
+//        {
+//            newPanther.PantherHunger();
 
 //        }
 //       else if (menuSelect == 2)

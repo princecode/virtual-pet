@@ -19,8 +19,8 @@ namespace VirtualPet
         public string Name { get; set; }
 
         private int hunger;
-        private int maxHunger = 10;
-        private int minHunger = 1;
+        private int maxHunger = 0;
+        private int minHunger = 10;
         public int Hunger
         {
             get
@@ -30,11 +30,12 @@ namespace VirtualPet
             set
             {
                 hunger = value;
-                if (hunger > maxHunger) ;
+                if (hunger < maxHunger) 
                 {
+                    Console.WriteLine("\n" + Name + " is full! Maybe try some training to burn off those calories!");
                     hunger = maxHunger;
                 }
-                if (hunger < minHunger) ;
+                if (hunger > minHunger) 
                 {
 
                     hunger = minHunger;
@@ -58,6 +59,7 @@ namespace VirtualPet
         public int Train { get; set; }
 
         //Pet Methods
+        //Constructors 
         public Pet()
         {
             //TODO
@@ -101,17 +103,12 @@ namespace VirtualPet
         public int PantherHunger()
         {
             //Todo
-            if (Hunger >= 10)
-            {
-                Console.WriteLine("\n" + Name + " is full! Maybe try some training to burn off those calories!");
-            }
-            else
-            {
-                Hunger--;
+          
+                Hunger++;
                 Thirst -= 1;
                 Bathroom += 1;
                                 
-            }
+            
             return Hunger;
             //Tick()
         }
@@ -154,6 +151,7 @@ namespace VirtualPet
         public int PantherBathroom()
         {
             //Todo
+
            
 
             return Bathroom;
@@ -171,6 +169,6 @@ namespace VirtualPet
         ////todo
         //continue 
         //}
-
+        
     }
 }
