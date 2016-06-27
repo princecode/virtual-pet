@@ -22,7 +22,7 @@ namespace VirtualPet
         private int maxHungerThirst = 0;
         private int minHungerThirst = 10;
         private int minStat = 0;
-        private int maxStat = 0;
+        private int maxStat = 10;
 
         public int Hunger
         {
@@ -80,35 +80,35 @@ namespace VirtualPet
         }
 
 
-        private int health;
-        public int Health
-        {
-            get
-            {
-                return health;
-            }
+        //private int health;
+        //public int Health
+        //{
+        //    get
+        //    {
+        //        return health;
+        //    }
 
-            set
-            {
-                health = value;
-                if (Hunger <= 2 || Thirst <= 2 || Health <= 2)
-                {
-                    Console.WriteLine("\n {0} is very weak! You need to check their vitals and train if you ever want to see battle!", Name);
-                }
-                if (health > maxStat)
-                {
-                    health = maxStat; // may modify later to allow super healthy pet
-                    Console.WriteLine("\n {0} is in great shape! The two of you will make great warriors!", Name);
-                    health = maxStat;
-                }
-                if (health < minHungerThirst)
-                {
+        //    set
+        //    {
+        //        health = value;
+        //        if (Hunger <= 2 || Thirst <= 2 || Health <= 2)
+        //        {
+        //            Console.WriteLine("\n {0} is very weak! You need to check their vitals and train if you ever want to see battle!", Name);
+        //        }
+        //        if (health > maxStat)
+        //        {
+        //            health = maxStat; // may modify later to allow super healthy pet
+        //            Console.WriteLine("\n {0} is in great shape! The two of you will make great warriors!", Name);
+        //            health = maxStat;
+        //        }
+        //        if (health < minHungerThirst)
+        //        {
 
-                    health = minHungerThirst;
-                }
+        //            health = minHungerThirst;
+        //        }
 
-            }
-        }
+        //    }
+        //}
         // possibly modified later to make more robust. Initally wanted it to be a bool
         private int bathroom;
         public int Bathroom
@@ -120,12 +120,12 @@ namespace VirtualPet
             set
             {
                 bathroom = value;
-                if (bathroom < maxStat)
+                if (bathroom >= maxStat)
                 {
                     Console.WriteLine("\n {0} does not need to go to the bathroom! It could be hungry or thirsty... Or maybe try some training!", Name);
                     bathroom = maxStat;
                 }
-                if (bathroom > minStat)
+                if (bathroom <= minStat)
                 {
 
                     bathroom = minStat;
@@ -147,7 +147,7 @@ namespace VirtualPet
             //TODO
             Hunger = 5;
             Thirst = 5;
-            Health = 7;
+            //Health = 7;
             Bathroom = 5;
             Train = 2;
 
@@ -170,7 +170,7 @@ namespace VirtualPet
             sb.AppendLine("--------------------------------------------------\n");
             sb.AppendFormat("Hunger: {0}                                     |\n", Hunger);
             sb.AppendFormat("Thirst: {0}                                     |\n", Thirst);
-            sb.AppendFormat("Health: {0}                                     |\n", Health);
+            //sb.AppendFormat("Health: {0}                                     |\n", Health);
             sb.AppendFormat("Bathroom: {0}                                   |\n", Bathroom);
             sb.AppendFormat("Train: {0}                                      |\n", Train);
             sb.AppendLine("\n--------------------------------------------------");
@@ -231,8 +231,10 @@ namespace VirtualPet
         public int PantherBathroom()
         {
             //Todo
-            bathroom = 0;
+            
             hunger = Hunger;
+            thirst = Thirst;
+            bathroom -= bathroom; 
 
             Console.WriteLine(" You've taken {0} to the bathroom! Their bathroom is now {1}", Name, Bathroom);
             Console.ReadKey();
