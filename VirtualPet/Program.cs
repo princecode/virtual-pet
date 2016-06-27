@@ -85,7 +85,7 @@ namespace VirtualPet
                             break;
 
                         case 3:
-                            newPanther.PantherHealth();
+                            //newPanther.PantherHealth();
                             break;
 
                         case 4:

@@ -19,8 +19,11 @@ namespace VirtualPet
         public string Name { get; set; }
 
         private int hunger;
-        private int maxHunger = 0;
-        private int minHunger = 10;
+        private int maxHungerThirst = 0;
+        private int minHungerThirst = 10;
+        private int minStat = 0;
+        private int maxStat = 0;
+
         public int Hunger
         {
             get
@@ -30,15 +33,15 @@ namespace VirtualPet
             set
             {
                 hunger = value;
-                if (hunger < maxHunger) 
+                if (hunger < maxHungerThirst) 
                 {
-                    Console.WriteLine("\n" + Name + " is full! Maybe try some training to burn off those calories!");
-                    hunger = maxHunger;
+                    Console.WriteLine("\n {0} is full! Maybe try some training to burn off those calories!", Name);
+                    hunger = maxHungerThirst;
                 }
-                if (hunger > minHunger) 
+                if (hunger > minHungerThirst) 
                 {
 
-                    hunger = minHunger;
+                    hunger = minHungerThirst;
                 }
 
 
@@ -47,17 +50,96 @@ namespace VirtualPet
 
         }
 
-       
 
 
-        public int Thirst { get; set; }
+        private int thirst;
+        public int Thirst
+        {
+            get
+            {
+                return thirst;
+            }
+            set
+            {
+                thirst = value;
+                if (thirst < maxHungerThirst)
+                {
+                    Console.WriteLine("\n {0} is not thirsty! Maybe try some training!", Name);
+                    thirst = maxHungerThirst;
+                }
+                if (thirst > minHungerThirst)
+                {
 
-        
+                    thirst = minHungerThirst;
+                }
 
-        public int Health { get; set; }
-        public int Bathroom { get; set; }
+
+            }
+
+
+        }
+
+
+        private int health;
+        public int Health
+        {
+            get
+            {
+                return health;
+            }
+
+            set
+            {
+                health = value;
+                if (Hunger <= 2 || Thirst <= 2 || Health <= 2)
+                {
+                    Console.WriteLine("\n {0} is very weak! You need to check their vitals and train if you ever want to see battle!", Name);
+                }
+                if (health > maxStat)
+                {
+                    health = maxStat; // may modify later to allow super healthy pet
+                    Console.WriteLine("\n {0} is in great shape! The two of you will make great warriors!", Name);
+                    health = maxStat;
+                }
+                if (health < minHungerThirst)
+                {
+
+                    health = minHungerThirst;
+                }
+
+            }
+        }
+        // possibly modified later to make more robust. Initally wanted it to be a bool
+        private int bathroom;
+        public int Bathroom
+        {
+            get
+            {
+                return bathroom;
+            }
+            set
+            {
+                bathroom = value;
+                if (bathroom < maxStat)
+                {
+                    Console.WriteLine("\n {0} does not need to go to the bathroom! It could be hungry or thirsty... Or maybe try some training!", Name);
+                    bathroom = maxStat;
+                }
+                if (bathroom > minStat)
+                {
+
+                    bathroom = minStat;
+                }
+
+            }
+
+        }
+
+
+
         public int Train { get; set; }
 
+        
         //Pet Methods
         //Constructors 
         public Pet()
@@ -107,52 +189,54 @@ namespace VirtualPet
                 Hunger++;
                 Thirst -= 1;
                 Bathroom += 1;
-                                
-            
+
+            Console.WriteLine(" You've fed {0}! Their Hunger is now {1}", Name, Hunger);
+            Console.ReadKey();
             return Hunger;
+            
             //Tick()
         }
         // ------------------------
         public int PantherThirst()
         {
-            //Todo
-            if (Thirst >= 10)
-            {
-                Console.WriteLine("\n" + Name + " is no thirsty! Maybe try some training!");
-            }
-            else
-            {
-                Thirst--;
+            //Todo                      
+          
+                Thirst++;
                 Hunger += 1;
                 Bathroom += 2;
-                
-            }
+
+            Console.WriteLine(" You've watered {0}! Their Thirst is now {1}", Name, Thirst);
+            Console.ReadKey();
             return Thirst;
             //Tick()
         }
         //----------------------------------
-        public int PantherHealth()
-        {
-            //Todo
-            if (Hunger <= 2 || Thirst <= 2 || Health <= 2)            
-            {
-                Console.WriteLine("\n" + Name + " is very weak! You need to check their vitals and train if you ever want to see battle!");
-            }        
-            else if (Health >= 9)
-            {
-                Console.WriteLine("\n" + Name + " is in great shape! The two of you will make great warriors!");
-                Health = 10;
-            }
-                     
-            return Health;
+        // TODO change health parameters
+        //// public int PantherHealth()
+        //{
+        //    //Todo
+        //    Thirst++;
+        //    Hunger += 1;
+        //    Bathroom += 2;
+
+        //    Console.WriteLine(" You've watered {0}! Their Thirst is now {1}", Name, Thirst);
+        //    Console.ReadKey();
+
+        //    return Health;
             //Tick()
-        }
+        //}
         //----------------------------------
+
+
         public int PantherBathroom()
         {
             //Todo
+            bathroom = 0;
+            hunger = Hunger;
 
-           
+            Console.WriteLine(" You've taken {0} to the bathroom! Their bathroom is now {1}", Name, Bathroom);
+            Console.ReadKey();
+
 
             return Bathroom;
         }
