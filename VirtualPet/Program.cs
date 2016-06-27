@@ -16,45 +16,49 @@ namespace VirtualPet
             // welcome
             // instructions
             Console.WriteLine("\n\nWAKANDA PANTHER TRAINER\n\nWould you like to train a baby panther totem?\n\nPlease enter \"1\" for \"Yes\" and \"2\" for \"No\"!\n");
-
+            Console.WriteLine();
             int introSelect = Convert.ToInt32(Console.ReadLine());
 
             if (introSelect == 1)
             {
                 Menu();
             }
-
+            Console.Clear();
             Console.WriteLine("\nThat's unfortunate. Feel free to return at a later time!\n Press any key to exit.");
             Console.ReadKey();
 
-            //private static void Menu()
-            //present possible options
-            //Create pet class
+          
         }
         private static void Menu()
         {
-
+            Console.Clear();
             Console.WriteLine("\n------------------------------------------------------------------------");
             Console.WriteLine("Wise decision Wakandan soldier! Name your Pather Totem.");
+            Console.WriteLine();
+            Console.WriteLine();
             Pet newPanther = new Pet();
             newPanther.Name = newPanther.PantherName();
 
-            // name test...SUCCESS!<--- add entry confirmation.     
-            Console.WriteLine("You've entered {0} is this the name you would like?", newPanther.Name);
+            Console.Clear();
+            Console.WriteLine("\n\nYou've entered {0} is this the name you would like?", newPanther.Name);
             Console.WriteLine("\n\nPlease enter \"1\" for \"Yes\" and \"2\" for \"No\"!\n");
+            Console.WriteLine();
 
             int nameConf = Convert.ToInt32(Console.ReadLine());
 
             if (nameConf == 1)
             {
+                Console.Clear();
                 int menuSelect;
                 do
                 {
-
-                    Console.WriteLine("\n" + newPanther.ToString());
-                    Console.WriteLine("\n--------------------------------------------------");
-                    Console.WriteLine("XXXXXXXX~~~|XXXXXXXXXXXXXXXXXXXXXXXXXX|~~~XXXXXXXX");
-                    Console.WriteLine("--------------------------------------------------\n");
+                   
+                    //Console.WriteLine();
+                    Console.WriteLine(newPanther.ToString());
+                    //Console.WriteLine();
+                    //Console.WriteLine("\n--------------------------------------------------");
+                    //Console.WriteLine("XXXXXXXX~~~|XXXXXXXXXXXXXXXXXXXXXXXXXX|~~~XXXXXXXX");
+                    //Console.WriteLine("--------------------------------------------------\n");
                     Console.WriteLine("1. Feed {0}.                                 |", newPanther.Name);
                     Console.WriteLine("2. Give {0} some water.                      |", newPanther.Name);
                     Console.WriteLine("3. Check {0}'s health.                       |", newPanther.Name);
@@ -66,7 +70,7 @@ namespace VirtualPet
                     Console.WriteLine("--------------------------------------------------\n");
 
 
-                    
+                    // KEEP GETTING ERROR HERE!!!!!!!!!!!!!!!!!!!!!
                     menuSelect = Convert.ToInt32(Console.ReadLine());
 
                     if (menuSelect == 1)

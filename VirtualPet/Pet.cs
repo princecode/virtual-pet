@@ -15,7 +15,7 @@ namespace VirtualPet
         //  Health ("              ")
         //  Bathroom ("               " )
         //  Train ("              ")
-       
+
         public string Name { get; set; }
 
         private int hunger;
@@ -26,37 +26,47 @@ namespace VirtualPet
             get
             {
                 return hunger;
-                    }
+            }
             set
             {
                 hunger = value;
-                if (hunger < maxHunger);
+                if (hunger > maxHunger) ;
                 {
-                    hunger = 0;
+                    hunger = maxHunger;
                 }
-                if (hunger > minHunger);
+                if (hunger < minHunger) ;
                 {
 
                     hunger = minHunger;
                 }
-                
 
-            }
-      
 
             }
 
 
-    
+        }
+
+       
+
+
         public int Thirst { get; set; }
-        public int Health { get; set; }
-        public bool Bathroom { get; set; }
-        public bool Train { get; set; }
+
         
+
+        public int Health { get; set; }
+        public int Bathroom { get; set; }
+        public int Train { get; set; }
+
         //Pet Methods
         public Pet()
         {
             //TODO
+            Hunger = 5;
+            Thirst = 5;
+            Health = 7;
+            Bathroom = 5;
+            Train = 2;
+
         }
 
         //name method
@@ -72,16 +82,16 @@ namespace VirtualPet
             var sb = new StringBuilder();
 
             sb.AppendLine("\n--------------------------------------------------");
-            sb.AppendFormat("XXXXXXXX~~~| Panther Totem: {0} Stats |~~~XXXXXXXX\n", Name);
+            sb.AppendFormat("XXXXXX~~~| Panther Totem: {0} Stats |~~~XXXXXX\n", Name);
             sb.AppendLine("--------------------------------------------------\n");
-            sb.AppendFormat("Hunger: {0}" + "       |\n", Hunger);
-            sb.AppendFormat("Thirst: {0}        |\n", Thirst);
-            sb.AppendFormat("Health: {0}     |\n", Health);
-            sb.AppendFormat("Bathroom: {0}   |\n", Bathroom);
-            sb.AppendFormat("Train: {0}       |\n", Train);
+            sb.AppendFormat("Hunger: {0}                                     |\n", Hunger);
+            sb.AppendFormat("Thirst: {0}                                     |\n", Thirst);
+            sb.AppendFormat("Health: {0}                                     |\n", Health);
+            sb.AppendFormat("Bathroom: {0}                                   |\n", Bathroom);
+            sb.AppendFormat("Train: {0}                                      |\n", Train);
             sb.AppendLine("\n--------------------------------------------------");
             sb.AppendLine("XXXXXXXX~~~|XXXXXXXXXXXXXXXXXXXXXXXXXX|~~~XXXXXXXX");
-            sb.AppendLine("--------------------------------------------------\n");
+            sb.AppendLine("--------------------------------------------------");
 
             return sb.ToString();
         }
@@ -91,28 +101,65 @@ namespace VirtualPet
         public int PantherHunger()
         {
             //Todo
+            if (Hunger >= 10)
+            {
+                Console.WriteLine("\n" + Name + " is full! Maybe try some training to burn off those calories!");
+            }
+            else
+            {
+                Hunger--;
+                Thirst -= 1;
+                Bathroom += 1;
+                                
+            }
             return Hunger;
+            //Tick()
         }
         // ------------------------
         public int PantherThirst()
         {
             //Todo
+            if (Thirst >= 10)
+            {
+                Console.WriteLine("\n" + Name + " is no thirsty! Maybe try some training!");
+            }
+            else
+            {
+                Thirst--;
+                Hunger += 1;
+                Bathroom += 2;
+                
+            }
             return Thirst;
+            //Tick()
         }
         //----------------------------------
         public int PantherHealth()
         {
             //Todo
+            if (Hunger <= 2 || Thirst <= 2 || Health <= 2)            
+            {
+                Console.WriteLine("\n" + Name + " is very weak! You need to check their vitals and train if you ever want to see battle!");
+            }        
+            else if (Health >= 9)
+            {
+                Console.WriteLine("\n" + Name + " is in great shape! The two of you will make great warriors!");
+                Health = 10;
+            }
+                     
             return Health;
+            //Tick()
         }
         //----------------------------------
-        public bool PantherBathroom()
+        public int PantherBathroom()
         {
             //Todo
+           
+
             return Bathroom;
         }
         //----------------------------------
-        public bool PantherTrain()
+        public int PantherTrain()
         {
             //Todo
             return Train;
@@ -122,7 +169,7 @@ namespace VirtualPet
         //public void Tick();
         //{
         ////todo
-        
+        //continue 
         //}
 
     }
