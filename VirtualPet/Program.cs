@@ -49,9 +49,9 @@ namespace VirtualPet
             if (nameConf == 1)
             {
                 Console.Clear();
-                int menuSelect;
+                int menuSelect = 0;
                 int retire;
-                while (true)
+                while (menuSelect != 6)
                 {
 
                     //Console.WriteLine();
@@ -112,7 +112,7 @@ namespace VirtualPet
 
                     }
 
-                    break;
+                    continue;
 
                 }
 
