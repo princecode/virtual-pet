@@ -27,7 +27,7 @@ namespace VirtualPet
             Console.WriteLine("\nThat's unfortunate. Feel free to return at a later time!\n Press any key to exit.");
             Console.ReadKey();
 
-          
+
         }
         private static void Menu()
         {
@@ -50,9 +50,10 @@ namespace VirtualPet
             {
                 Console.Clear();
                 int menuSelect;
-                do
+                int retire;
+                while (true)
                 {
-                   
+
                     //Console.WriteLine();
                     Console.WriteLine(newPanther.ToString());
                     //Console.WriteLine();
@@ -73,52 +74,83 @@ namespace VirtualPet
                     // KEEP GETTING ERROR HERE!!!!!!!!!!!!!!!!!!!!!
                     menuSelect = Convert.ToInt32(Console.ReadLine());
 
-                    if (menuSelect == 1)
+                    switch (menuSelect)
                     {
-                        newPanther.PantherHunger();
+                        case 1:
+                            newPanther.PantherHunger();
+                            break;
 
+                        case 2:
+                            newPanther.PantherHunger();
+                            break;
+
+                        case 3:
+                            newPanther.PantherHealth();
+                            break;
+
+                        case 4:
+                            newPanther.PantherBathroom();
+                            break;
+
+                        case 5:
+                            newPanther.PantherTrain();
+                            break;
+
+
+                        default:
+                            continue;
+                            //Console.WriteLine("Are you sure you'd like to retire {0}?\n Enter 1 for yes and 2 for no.\n\n", newPanther.Name);
+
+
+                            //retire = Convert.ToInt32(Console.ReadLine());
+                            //break;
                     }
-                   else if (menuSelect == 2)
-                    {
-                        newPanther.PantherThirst();
 
-                    }
-                    else if (menuSelect == 3)
-                    {
-                        newPanther.PantherHealth();
 
-                    }
-                    else if (menuSelect == 4)
-                    {
-                        newPanther.PantherBathroom();
 
-                    }
-                    else if (menuSelect == 5)
-                    {
-                        newPanther.PantherTrain();
-
-                    }
-                    else
-                    {
-                        continue;
-
-                    }
-
-                                       
                 }
-                while (menuSelect != 6);
-                
+
+
+
             }
-            
-
-
-
-
-
         }
-
-
     }
 }
 
 
+        //        if (menuSelect == 1)
+        //        {
+        //            newPanther.PantherHunger();
+
+//        }
+//       else if (menuSelect == 2)
+//        {
+//            newPanther.PantherThirst();
+
+//        }
+//        else if (menuSelect == 3)
+//        {
+//            newPanther.PantherHealth();
+
+//        }
+//        else if (menuSelect == 4)
+//        {
+//            newPanther.PantherBathroom();
+
+//        }
+//        else if (menuSelect == 5)
+//        {
+//            newPanther.PantherTrain();
+
+//        }
+//        else
+//        {
+//            continue;
+
+//        }
+
+
+//    }
+//    while (menuSelect != 6);
+
+//}
