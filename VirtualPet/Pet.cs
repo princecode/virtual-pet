@@ -8,13 +8,7 @@ namespace VirtualPet
 {
     class Pet
     {
-        //Properties
-        //  Name
-        //  Hunger (and how feeding works)
-        //  Thirst (and how watering works)
-        //  Health ("              ")
-        //  Bathroom ("               " )
-        //  Train ("              ")
+
 
         public string Name { get; set; }
 
@@ -33,12 +27,12 @@ namespace VirtualPet
             set
             {
                 hunger = value;
-                if (hunger < maxHungerThirst) 
+                if (hunger < maxHungerThirst)
                 {
                     Console.WriteLine("\n {0} is full! Maybe try some training to burn off those calories!", Name);
                     hunger = maxHungerThirst;
                 }
-                if (hunger > minHungerThirst) 
+                if (hunger > minHungerThirst)
                 {
 
                     hunger = minHungerThirst;
@@ -79,7 +73,7 @@ namespace VirtualPet
 
         }
 
-
+        //Possibly add in future
         //private int health;
         //public int Health
         //{
@@ -91,15 +85,16 @@ namespace VirtualPet
         //    set
         //    {
         //        health = value;
-        //        if (Hunger <= 2 || Thirst <= 2 || Health <= 2)
-        //        {
-        //            Console.WriteLine("\n {0} is very weak! You need to check their vitals and train if you ever want to see battle!", Name);
-        //        }
+        //        
+        //        //if (Hunger <= 2 || Thirst <= 2 || Health <= 2)
+        //        //{
+        //        //    Console.WriteLine("\n {0} is very weak! You need to check their vitals and train if you ever want to see battle!", Name);
+        //        //}
         //        if (health > maxStat)
         //        {
         //            health = maxStat; // may modify later to allow super healthy pet
         //            Console.WriteLine("\n {0} is in great shape! The two of you will make great warriors!", Name);
-        //            health = maxStat;
+
         //        }
         //        if (health < minHungerThirst)
         //        {
@@ -109,6 +104,8 @@ namespace VirtualPet
 
         //    }
         //}
+
+
         // possibly modified later to make more robust. Initally wanted it to be a bool
         private int bathroom;
         public int Bathroom
@@ -136,12 +133,42 @@ namespace VirtualPet
         }
 
 
+        private int train;
+        public int Train
+        {
+            get
+            {
+                return train;
+            }
+            set
+            {
+                train = value;
+                if (train >= maxStat)
+                {
+                    Console.WriteLine("\n {0} is well trained! You two will make excellent warriors!", Name); //Modify later to allow advanced training
+                    bathroom = maxStat;
+                }
+                if (train <= minStat)
+                {
 
-        public int Train { get; set; }
+                    train = minStat;
+                }
 
-        
-        //Pet Methods
-        //Constructors 
+            }
+        }
+
+
+        private int tick;
+        public int Tick
+        {
+            get; set;
+                
+                }
+
+      
+
+
+
         public Pet()
         {
             //TODO
@@ -153,7 +180,7 @@ namespace VirtualPet
 
         }
 
-        //name method
+
         public string PantherName()
         {
             return Name = Console.ReadLine();
@@ -184,77 +211,86 @@ namespace VirtualPet
 
         public int PantherHunger()
         {
-            //Todo
-          
-                Hunger++;
-                Thirst -= 1;
-                Bathroom += 1;
+
+
+            Hunger++;
+            Thirst -= 1;
+            Bathroom += 1;
 
             Console.WriteLine(" You've fed {0}! Their Hunger is now {1}", Name, Hunger);
             Console.ReadKey();
+            PantherTick();
             return Hunger;
-            
-            //Tick()
+                   
         }
         // ------------------------
         public int PantherThirst()
         {
-            //Todo                      
-          
-                Thirst++;
-                Hunger += 1;
-                Bathroom += 2;
+
+
+            Thirst++;
+            Hunger += 1;
+            Bathroom += 2;
 
             Console.WriteLine(" You've watered {0}! Their Thirst is now {1}", Name, Thirst);
             Console.ReadKey();
+            PantherTick();
             return Thirst;
-            //Tick()
+            
         }
-        //----------------------------------
-        // TODO change health parameters
-        //// public int PantherHealth()
-        //{
-        //    //Todo
-        //    Thirst++;
-        //    Hunger += 1;
-        //    Bathroom += 2;
+        ////----------------------------------
+        //// TODO change health parameters
+        ////public int PantherHealth()
+        ////{
+        ////    //Todo
 
-        //    Console.WriteLine(" You've watered {0}! Their Thirst is now {1}", Name, Thirst);
-        //    Console.ReadKey();
-
-        //    return Health;
-            //Tick()
+        ////    return Health;
+        //    //Tick()
         //}
         //----------------------------------
 
 
         public int PantherBathroom()
         {
-            //Todo
-            
+
+
             hunger = Hunger;
             thirst = Thirst;
-            bathroom -= bathroom; 
+            bathroom -= bathroom;
 
-            Console.WriteLine(" You've taken {0} to the bathroom! Their bathroom is now {1}", Name, Bathroom);
+            Console.WriteLine("You've taken {0} to the bathroom! Their bathroom is now {1}", Name, Bathroom);
             Console.ReadKey();
 
-
+            PantherTick();
             return Bathroom;
         }
         //----------------------------------
         public int PantherTrain()
         {
             //Todo
+            Train++;
+            Hunger -= 1;
+            Thirst -= 1;
+            //Health += 2;
+
+            Console.WriteLine("You've trained {0}! Their training is now {1}", Name, Train);
+            Console.ReadKey();
+            PantherTick();
             return Train;
         }
         //----------------------------------
-        //Tick method
-        //public void Tick();
-        //{
-        ////todo
-        //continue 
-        //}
-        
+        // Tick method
+        public int PantherTick()
+        {
+            Hunger -= 1;
+            Thirst -= 1;
+            Train -= 1; // everyother tick?
+            Bathroom += 1;
+            //Health -= 1; //every 3rd tick?
+
+            return 0;
+           
+        }
+
     }
 }
