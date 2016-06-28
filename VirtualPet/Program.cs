@@ -51,7 +51,7 @@ namespace VirtualPet
                 Console.Clear();
                 int menuSelect = 0;
                 int retire;
-                while (menuSelect != 6)
+                while (menuSelect != 5)
                 {
 
                     //Console.WriteLine();
@@ -62,10 +62,10 @@ namespace VirtualPet
                     //Console.WriteLine("--------------------------------------------------\n");
                     Console.WriteLine("1. Feed {0}.                                 |", newPanther.Name);
                     Console.WriteLine("2. Give {0} some water.                      |", newPanther.Name);
-                    Console.WriteLine("3. Check {0}'s health.                       |", newPanther.Name);
-                    Console.WriteLine("4. Take {0} to the bathroom                  |", newPanther.Name);
-                    Console.WriteLine("5. Train with {0}                            |", newPanther.Name);
-                    Console.WriteLine("6. Retire {0}                                |", newPanther.Name);
+                    //Console.WriteLine("3. Check {0}'s health.                       |", newPanther.Name);
+                    Console.WriteLine("3. Take {0} to the bathroom                  |", newPanther.Name);
+                    Console.WriteLine("4. Train with {0}                            |", newPanther.Name);
+                    Console.WriteLine("5. Retire {0}                                |", newPanther.Name);
                     Console.WriteLine("\n--------------------------------------------------");
                     Console.WriteLine("XXXXXXXX~~~|XXXXXXXXXXXXXXXXXXXXXXXXXX|~~~XXXXXXXX");
                     Console.WriteLine("--------------------------------------------------\n");
@@ -84,15 +84,15 @@ namespace VirtualPet
                             newPanther.PantherThirst();
                             break;
 
-                        case 3:
-                            //newPanther.PantherHealth();
-                            break;
+                        //case 3:
+                        //    //newPanther.PantherHealth();
+                        //    break;
 
-                        case 4:
+                        case 3:
                             newPanther.PantherBathroom();
                             break;
 
-                        case 5:
+                        case 4:
                             newPanther.PantherTrain();
                             break;
 
@@ -108,7 +108,7 @@ namespace VirtualPet
                                 continue;
                             }
                            
-                            break;
+                                break;
 
                     }
 

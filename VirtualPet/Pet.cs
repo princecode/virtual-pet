@@ -18,6 +18,26 @@ namespace VirtualPet
         private int minStat = 0;
         private int maxStat = 10;
 
+
+        private bool tickMod = false;
+
+        public bool TickMod()
+        {
+            tickMod = true;
+
+            return tickMod; 
+
+        }
+
+        private bool tickModR;
+        public bool TickModR()
+        {
+            tickModR = false;
+
+            return tickModR;
+
+        }
+
         public int Hunger
         {
             get
@@ -158,12 +178,8 @@ namespace VirtualPet
         }
 
 
-        private int tick;
-        public int Tick
-        {
-            get; set;
-                
-                }
+        
+        
 
       
 
@@ -253,9 +269,15 @@ namespace VirtualPet
         public int PantherBathroom()
         {
 
+            if (hunger <= 3)
+            {
+                hunger = Hunger;
+            }
+            if (thirst <= 3)
+            {
+                thirst = Thirst;
+            }
 
-            hunger = Hunger;
-            thirst = Thirst;
             bathroom -= bathroom;
 
             Console.WriteLine("You've taken {0} to the bathroom! Their bathroom is now {1}", Name, Bathroom);
@@ -275,6 +297,7 @@ namespace VirtualPet
 
             Console.WriteLine("You've trained {0}! Their training is now {1}", Name, Train);
             Console.ReadKey();
+            TickMod();
             PantherTick();
             return Train;
         }
@@ -283,9 +306,15 @@ namespace VirtualPet
         public int PantherTick()
         {
             Hunger -= 1;
-            Thirst -= 1;
-            Train -= 1; // everyother tick?
+            
+            if (tickMod == true)
+            {
+                Train += 1;
+                Thirst -= 1;
+            }
+            
             Bathroom += 1;
+            TickModR();
             //Health -= 1; //every 3rd tick?
 
             return 0;
